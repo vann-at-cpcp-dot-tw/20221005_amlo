@@ -1,0 +1,52 @@
+$aniDuration: .2s
+
+.pairGame-gameArea
+  position: relative
+  display: flex
+  flex-flow: row wrap
+  .card
+    &.done
+      pointer-events: none
+      .back
+        img
+          transform: rotateY(90deg)
+      .front
+        img
+          transform: rotateY(0deg)
+    &.open
+      pointer-events: none
+      .back
+        img
+          transform: rotateY(90deg)
+      .front
+        img
+          transform: rotateY(0deg)
+          // transition-delay: $aniDuration
+    &.closing
+      .back
+        img
+          transform: rotateY(0deg)
+          // transition-delay: $aniDuration
+      .front
+        img
+          transform: rotateY(-90deg)
+    .back
+      position: relative
+      z-index: 10
+      img
+        // transition: all $aniDuration
+        transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000)
+
+    .front
+      position: absolute
+      width: 100%
+      z-index: 0
+      left: 0
+      top: 0
+      img
+        // transition: all $aniDuration
+        transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000)
+        transform: rotateY(-90deg)
+
+
+

@@ -1,0 +1,396 @@
+
+// m_0.1 選擇角色
+.choose {
+
+  .title {
+    margin-bottom: 26px;
+    width: 438px;
+  }
+
+  .inner {
+    padding-top: 193px;
+    padding-left: 350px;
+    padding-right: 370px;
+  }
+
+  .list {
+    @include flexbox;
+    @include flex-wrap($value: nowrap);
+    @include justify-content($value: space-between);
+    margin: 0 -27px;
+  }
+
+  .item {
+    width: 364px;
+    margin: 0 27px;
+    text-align: center;
+    cursor: pointer;
+
+    &.active {
+
+      img {
+        -webkit-filter: drop-shadow(0 0 20px rgba(#000, 0.5));
+        filter: drop-shadow(0 0 20px rgba(#000, 0.5));
+      }
+      
+    }
+
+  }
+
+  .form {
+    @include flexbox;
+    @include flex-wrap($value: nowrap);
+    @include justify-content($value: space-between);
+    @include align-items($value: center);
+    margin: 50px 0 0 26px;
+    max-width: 1056px;
+  }
+
+  .form-control {
+    width: 665px;
+    height: 109px;
+    border: 3px solid #231815;
+    border-radius: 24px;
+    padding: 0 36px;
+    background-color: #fff;
+  }
+
+  .btn {
+    width: 326px;
+  }
+
+}
+
+.role {
+  width: 326px;
+  pointer-events: none;
+
+  // img {
+  //   animation: floating 1s infinite;
+  // }
+
+}
+
+.game1-intro {
+
+  .layer {
+    width: 280px;
+    position: absolute;
+    top: 178px;
+    left: 167px;
+  }
+
+  .inner {
+    padding-top: 714px;
+    padding-left: 566px;
+  }
+
+  .btn {
+    width: 326px;
+
+    img {
+      animation: pulse 1s infinite;
+    }
+
+  }
+
+}
+
+.panel {
+  position: absolute;
+  top: 163px;
+  right: 53px;
+  @include flexbox;
+  @include flex-wrap($value: nowrap);
+  font-size: 79px;
+  line-height: 133px;
+  color: #fff;
+  text-align: right;
+  pointer-events: none;
+
+  .block {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding-right: 55px;
+    padding-left: 110px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+  }
+
+  .star {
+    width: 273px;
+    height: 133px;
+    background-image: url(../images/panel-star.png);
+    margin-right: 16px;
+  }
+
+  .time {
+    width: 287px;
+    height: 133px;
+    background-image: url(../images/panel-time.png);
+  }
+
+}
+
+.game1-main {
+
+  .coin {
+    position: absolute;
+    width: 87px;
+
+    // img {
+    //   animation: floating 1s infinite;
+    // }
+
+  }
+
+  .control {
+    position: absolute;
+    width: 116px;
+    top: 942px;
+    cursor: pointer;
+
+    &-left {
+      left: 198px;
+    }
+
+    &-right {
+      right: 198px;
+    }
+
+  }
+
+}
+
+
+.game2-intro {
+
+  .layer {
+    width: 280px;
+    position: absolute;
+    top: 123px;
+    left: 445px;
+  }
+
+  .inner {
+    padding-top: 755px;
+    padding-left: 964px;
+  }
+
+  .btn {
+    width: 326px;
+
+    img {
+      animation: pulse 1s infinite;
+    }
+
+  }
+
+}
+
+
+.game2-main {
+
+  .magnifier {
+    position: absolute;
+    width: 170px;
+    pointer-events: none;
+  }
+
+  .item {
+    position: absolute;
+    width: 282px;
+    @include transform(translateX(-50%) translateY(-50%));
+
+    &.locked,
+    &.release {
+
+      .mask {
+        display: block;
+      }
+
+    }
+
+  }
+
+  .mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 10000;
+    background: white;
+    opacity: 0;
+    display: none;
+  }
+
+  .card {
+    width: 282px;
+    height: 262px;
+    overflow: hidden;
+    position: relative;
+
+    a {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .flip {
+      pointer-events: none !important;
+
+      &.out {
+        -webkit-transform: rotateY(-90deg) scale(0.9);
+        transform: rotateY(-90deg) scale(0.9);
+        -webkit-animation-name: flipouttoleft;
+        animation-name: flipouttoleft;
+        -webkit-animation-duration: 175ms;
+        animation-duration: 175ms;
+      }
+      
+      &.in {
+        -webkit-animation-name: flipintoright;
+        animation-name: flipintoright;
+        -webkit-animation-duration: 225ms;
+        animation-duration: 225ms;
+      }
+
+    }
+
+  }
+
+}
+
+@-webkit-keyframes flipouttoleft {
+  from {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0); }
+  to {
+    -webkit-transform: rotateY(-90deg) scale(0.9);
+    transform: rotateY(-90deg) scale(0.9);
+  }
+}
+
+@keyframes flipouttoleft {
+  from {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0); }
+  to {
+    -webkit-transform: rotateY(-90deg) scale(0.9);
+    transform: rotateY(-90deg) scale(0.9);
+  }
+}
+
+@-webkit-keyframes flipintoright {
+  from {
+    -webkit-transform: rotateY(90deg) scale(0.9);
+    transform: rotateY(90deg) scale(0.9); }
+  to {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+  }
+}
+
+@keyframes flipintoright {
+  from {
+    -webkit-transform: rotateY(90deg) scale(0.9);
+    transform: rotateY(90deg) scale(0.9); }
+  to {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+  }
+}
+
+
+.game3-intro {
+
+  .layer {
+    width: 280px;
+    position: absolute;
+    top: 180px;
+    left: 418px;
+  }
+
+  .inner {
+    padding-top: 702px;
+    padding-left: 830px;
+  }
+
+  .btn {
+    width: 326px;
+
+    img {
+      animation: pulse 1s infinite;
+    }
+
+  }
+
+}
+
+.game3-main {
+  font-size: 36px;
+  line-height: 46px;
+  font-weight: 700;
+  color: #231815;
+
+  .inner {
+    padding-top: 410px;
+    padding-left: 486px;
+    padding-right: 386px;
+    padding-bottom: 154px;
+  }
+
+  .action {
+    @include flexbox;
+    @include justify-content($value: flex-end);
+    margin-top: auto;
+    padding-right: 20px;
+  }
+
+  .info {
+    position: relative;
+    @include flexbox;
+    @include flex-wrap($value: nowrap);
+    @include flex-direction($value: column);
+    @include justify-content($value: space-between);
+    height: 515px;
+  }
+
+  .btn {
+    width: 326px;
+  }
+
+  .question {
+    position: relative;
+    @include flexbox;
+    @include flex-wrap($value: nowrap);
+    @include flex-direction($value: column);
+    @include justify-content($value: space-between);
+    height: 515px;
+  }
+
+  .topic {
+    margin-bottom: 20px;
+  }
+
+  .list {
+    margin-bottom: auto;
+  }
+
+  .options {
+    cursor: pointer;
+    line-height: 56px;
+    padding-left: 1.25em;
+    text-indent: -1.25em;
+
+    &.active {
+      color: #C30D23;
+    }
+
+  }
+
+}

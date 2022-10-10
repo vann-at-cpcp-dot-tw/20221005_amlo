@@ -1,0 +1,17 @@
+
+.btn {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  border-radius: none;
+  display: block;
+  @include transition(.5s ease);
+  text-decoration: none;
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+    @include filter(brightness(120%));
+  }
+
+}

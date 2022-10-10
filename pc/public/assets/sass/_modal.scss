@@ -1,0 +1,316 @@
+.modal {
+    background-color: rgba(#000, .5);
+    overflow-y: auto;
+
+    a {
+        text-decoration: none;
+    }
+
+    img {
+        display: block;
+    }
+
+    &-dialog {
+        max-width: 677px;
+        margin: 0 auto;
+        width: 677px;
+    }
+
+    &-body {
+        padding: 0;
+    }
+
+    &-content {
+        border-radius: 40px;
+        padding: 52px;
+        background-color: #fff;
+        font-size: 51px;
+        line-height: 71px;
+        font-weight: 500;
+        color: #000;
+        border: 4px solid #000;
+        box-shadow: 0 0 0 11px #CECECE inset;
+    }
+
+    .close {
+        position: absolute;
+        top: 32px;
+        right: 32px;
+        width: 80px;
+        height: 80px;
+        // @include transform(translateX(50%) translateY(-50%));
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+        font-size: 0;
+        text-indent: 100%;
+        white-space: nowrap;
+        appearance: none;
+        box-shadow: none;
+        border-radius: none;
+        border: none;
+        cursor: pointer;
+        background-size: 40px 40px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-image: url(../images/modal-close.png);
+        opacity: 1;
+        // @include transform(translateX(50%) translateY(-50%));
+
+        &:hover,
+        &:active {
+            opacity: .8;
+        }
+
+    }
+
+    .scroll-box {
+        position: relative;
+
+        &__inner {
+            overflow: auto;
+            height: 690px;
+            padding-right: 0;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #ddd;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            background-color: #ddd;
+            opacity: 0.2;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            width: 6px;
+            border-radius: 3px;
+            background-color: #C30D23;
+        }
+
+    }
+
+
+}
+
+
+// m_1.3 第一關_闖關成功
+.success-modal {
+
+    .modal-dialog {
+        width: 677px;
+    }
+
+    .image {
+        width: 182px;
+        margin: 0 auto 10px;
+    }
+
+    .text {
+        text-align: center;
+        font-size: 51px;
+        line-height: 71px;
+        font-weight: 700;
+        color: #C30D23;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        width: 359px;
+        margin: 0 auto;
+    }
+
+}
+
+
+// m_3.3.1 第三關_問答題目_答對
+.correct-modal {
+
+    .modal-dialog {
+        width: 677px;
+    }
+
+    .image {
+        width: 293px;
+        margin: 0 auto;
+    }
+
+    .text {
+        text-align: center;
+        font-size: 51px;
+        line-height: 71px;
+        font-weight: 700;
+        color: #41AA22;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        width: 359px;
+        margin: 0 auto;
+    }
+
+}
+
+// m_3.3.2 第三關_問答題目_答錯
+.wrong-modal {
+
+    .modal-dialog {
+        width: 677px;
+    }
+
+    .image {
+        width: 293px;
+        margin: 0 auto;
+    }
+
+    .text {
+        text-align: center;
+        font-size: 51px;
+        line-height: 71px;
+        font-weight: 700;
+        color: #C30D23;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        width: 359px;
+        margin: 0 auto;
+    }
+
+}
+
+
+
+
+
+
+// m_4.0 填寫資料
+.form-modal {
+
+    .modal-dialog {
+        width: 1110px;
+        max-width: 1110px;
+    }
+
+    // .modal-content {
+    //     padding-bottom: 75px;
+    // }
+
+    // .btn {
+    //     width: 359px;
+    //     margin: 0 auto;
+    // }
+
+    // .title {
+    //     text-align: center;
+    //     font-size: 60px;
+    //     line-height: 87px;
+    //     font-weight: 700;
+    //     color: #C30D23;
+    //     margin-bottom: 0;
+    // }
+
+    // .text {
+    //     font-size: 48px;
+    //     line-height: 70px;
+    //     text-align: center;
+    //     margin-bottom: 46px;
+    // }
+
+    .modal-content {
+        padding-top: 140px;
+        padding-bottom: 150px;
+    }
+
+    .image {
+        width: 232px;
+        margin: 0 auto 36px;
+    }
+
+    .text {
+        text-align: center;
+        font-size: 60px;
+        line-height: 71px;
+        font-weight: 700;
+        color: #C30D23;
+        margin-bottom: 0;
+    }
+
+}
+
+
+// m_5.0 排行榜
+.charts-modal {
+
+    .modal-dialog {
+        width: 1110px;
+        max-width: 1110px;
+    }
+
+    .title {
+        width: 395px;
+        margin: 0 auto 32px;
+    }
+
+    .charts-table {
+        text-align: center;
+        font-size: 46px;
+        line-height: 70px;
+        color: #000;
+        font-weight: 700;
+
+        th {
+            width: 33.3333%;
+            padding: 0 16px 16px;
+            color: #C30D23;
+            border-bottom: 1px solid #F2CCD0;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #F2CCD0;
+        }
+
+    }
+
+}
+
+
+
+// m_0.0 首頁_提示
+.hint-modal {
+
+    .modal-dialog {
+        width: 677px;
+    }
+
+    .image {
+        width: 206px;
+        margin: 44px auto 0;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 50px;
+        line-height: 72px;
+        font-weight: 700;
+        color: #C30D23;
+        margin-bottom: 28px;
+    }
+
+    p {
+        text-align: center;
+        font-size: 36px;
+        line-height: 51px;
+        font-weight: 500;
+
+        + p {
+            margin-top: 24px;
+        }
+
+    }
+
+}

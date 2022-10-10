@@ -1,0 +1,19 @@
+.catchGame-catchBox
+  position: absolute
+  transform-origin: center top
+  z-index: 10
+  // border: solid 1px red
+  // width: 58px
+  // height: 92px
+
+.catchGame-gameArea
+  @apply absolute w-full h-full flex flex-nowrap
+  .column
+    @apply relative grow
+  .dropItem
+    @apply absolute left-1/2 -translate-x-1/2
+    top: 0px
+    &.dropping
+      top: 100%
+    &.end
+      display: none

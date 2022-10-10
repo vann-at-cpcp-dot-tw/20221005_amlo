@@ -1,0 +1,195 @@
+// .btn-row {
+//     @include flexbox;
+//     @include flex-wrap($value: nowrap);
+//     @include justify-content($value: center);
+
+//     .btn {
+//         margin: 0 10px;
+//     }
+
+// }
+
+.form-control {
+    padding: 0 36px;
+    line-height: 80px;
+    font-size: 40px;
+    font-weight: 700;
+    height: 80px;
+    color: #000;
+    background-color: #E9E9E9;
+    border: 1px solid #E9E9E9;
+    border-radius: 16px;
+    width: 100%;
+    font-family: Arial, 'Noto Sans TC', 'Microsoft JhengHei', '微軟正黑體', Helvetica, sans-serif, 'Microsoft YaHei';
+
+
+    &::placeholder {
+        font-size: 40px;
+        font-weight: 700;
+        opacity: 1;
+        color: #B4B4B5;
+    }
+
+}
+
+// .radio-group {
+//     @include flexbox;
+//     @include flex-wrap($value: wrap);
+// }
+
+.radio-item {
+    position: relative;
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    label {
+        padding: 0 0 0 38px;
+        font-size: 18px;
+        line-height: 32px;
+        font-weight: 500;
+        display: block;
+    }
+
+    label:before {
+        content: '';
+        display: inline-block;
+        background-color: #000;
+        border: 2px solid #fff;
+        position: absolute;
+        left: 0;
+        top: 1px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        width: 30px;
+        height: 30px;
+        @include transition(.5s ease);
+    }
+
+    label:after {
+        content: '';
+        background-image: url(../images/check.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 24px;
+        position: absolute;
+        border-radius: 0;
+        width: 30px;
+        height: 30px;
+        box-sizing: border-box;
+        left: 0;
+        top: 1px;
+        display: none;
+    }
+
+    input:checked+label:after {
+        display: block;
+    }
+
+    input+label {
+        transition: .7s ease;
+    }
+
+}
+
+.checkbox-item {
+    position: relative;
+
+    input {
+        display: none;
+    }
+
+    label {
+        padding: 0 0 0 30px;
+        font-size: 19px;
+        line-height: 22px;
+        font-weight: 500;
+        display: block;
+    }
+
+    label:before {
+        content: '';
+        display: inline-block;
+        background-color: #fff;
+        border: 1px solid #A19A79;
+        position: absolute;
+        left: 0;
+        top: 1px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        width: 22px;
+        height: 22px;
+        @include transition(.5s ease);
+    }
+
+    label:after {
+        content: '';
+        background-image: url(../images/check.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 22px;
+        position: absolute;
+        border-radius: 0;
+        width: 22px;
+        height: 22px;
+        box-sizing: border-box;
+        left: 0;
+        top: 1px;
+        display: none;
+    }
+
+    input:checked+label:after {
+        display: block;
+    }
+
+    input+label {
+        transition: .7s ease;
+    }
+
+}
+
+
+.form {
+    font-size: 48px;
+    line-height: 80px;
+    max-width: 625px;
+    margin: 0 auto;
+
+    .form-control {
+        border-radius: 16px;
+        display: block;
+    }
+
+    .form-section {
+        @include flexbox;
+        @include flex-wrap($value: nowrap);
+        word-wrap: break-word;
+        word-break: break-all;
+
+        + .form-section {
+            margin-top: 36px;
+        }
+
+    }
+
+    .form-label {
+        width: 136px;
+        line-height: 80px;
+        font-weight: 500;
+        position: relative;
+        text-align: left;
+    }
+
+    .form-content {
+        width: calc(100% - 136px);
+    }
+
+
+    .action {
+        padding-top: 65px;
+    }
+
+
+}
+

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-language" content="zh-tw">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>洗錢威脅大搜查</title>
+    <meta name="keywords" content="洗錢威脅大搜查" />
+    <meta name="description" content="依據洗錢威脅辨識結果發現，臺灣深受洗錢非常高度威脅的犯罪共有10 大類型，包含毒品販運、詐欺、走私、稅務犯罪、組織犯罪、證券犯罪、地下匯兌、非法賭博含網路博弈、貪污賄賂及智慧財產犯罪等，高度威脅的犯罪類型則為第三方洗錢，現在就讓我們跟著洗防寶寶的腳步，一起進行洗錢威脅大搜查吧！" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="assets/images/meta.jpg" />
+    <meta property="og:title" content="洗錢威脅大搜查" />
+    <meta property="og:description" content="依據洗錢威脅辨識結果發現，臺灣深受洗錢非常高度威脅的犯罪共有10 大類型，包含毒品販運、詐欺、走私、稅務犯罪、組織犯罪、證券犯罪、地下匯兌、非法賭博含網路博弈、貪污賄賂及智慧財產犯罪等，高度威脅的犯罪類型則為第三方洗錢，現在就讓我們跟著洗防寶寶的腳步，一起進行洗錢威脅大搜查吧！" />
+    <meta name="author" content="Corona">
+    <link rel="shortcut icon" href="assets/favicons/favicon.png">
+    <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Nunito:wght@900&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Nunito:wght@900&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Nunito:wght@900&display=swap" />
+    </noscript>
+
+    <style>
+        .pairArea {
+            margin-top: 75px
+        }
+        .pairArea .card {
+            position: absolute;
+            overflow: visible;
+            width: 282px;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        .pairArea .card:nth-child(1) { top: 585px; left: 196px;  }
+        .pairArea .card:nth-child(2) { top: 460px; left: 433px;  }
+        .pairArea .card:nth-child(3) { top: 358px; left: 709px;  }
+        .pairArea .card:nth-child(4) { top: 330px; left: 1056px; }
+        .pairArea .card:nth-child(5) { top: 798px; left: 434px;  }
+        .pairArea .card:nth-child(6) { top: 628px; left: 658px;  }
+        .pairArea .card:nth-child(7) { top: 534px; left: 936px;  }
+        .pairArea .card:nth-child(8) { top: 448px; left: 1282px; }
+        .pairArea .card:nth-child(9) { top: 780px; left: 896px;  }
+        .pairArea .card:nth-child(10){ top: 672px; left: 1170px; }
+        .pairArea .card:nth-child(11){ top: 573px; left: 1507px; }
+        .pairArea .card:nth-child(12){ top: 440px; left: 1736px; }
+        .pairArea .card:nth-child(13){ top: 802px; left: 1429px; }
+        .pairArea .card:nth-child(14){ top: 674px; left: 1768px; }
+    </style>
+    <script>
+        var avatarOffsetX = {
+            'section-catchGameIntro': 100,
+            'section-pairGame': -900,
+            'section-pairGameIntro': 500,
+            'section-quizGame': -700,
+            'section-quizGameIntro': 400,
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script type="module" src="src/main.js"></script>
+</head>
+
+<body class="overflow-hidden">
+    <div id="app" v-cloak>
+        <div id="container">
+
+            <div id="header" class="site-header">
+                <div class="container">
+                    <a class="logo">行政院洗錢防制辦公室</a>
+                </div>
+            </div>
+
+            <div id="content" class="site-content">
+
+                <div id="avatar"
+                v-show="state.displayAniAvatar">
+                    <div class="role">
+                        <img :src="state.aniAvatarUrl" alt="" width="119" height="133">
+                    </div>
+                </div>
+
+                <div class="section kv">
+                    <div class="container">
+                        <div class="bg"><img src="assets/images/kv-bg.jpg" alt="" width="1920" height="1080"></div>
+                        <div class="kv-layer kv-coin">
+                            <img src="assets/images/kv-coin.png" alt="" width="1920" height="1080">
+                        </div>
+                        <div class="kv-layer kv-man">
+                            <img src="assets/images/kv-man.png" alt="" width="1920" height="1080">
+                        </div>
+                        <div class="kv-layer kv-box">
+                            <img src="assets/images/kv-box.png" alt="" width="1920" height="1080">
+                        </div>
+                        <div class="kv-layer kv-slogan">
+                            <h1><img src="assets/images/kv-slogan.png" alt="洗錢威脅大搜查" width="1920" height="1080"></h1>
+                        </div>
+                        <div class="kv-layer kv-sub">
+                            <img src="assets/images/kv-sub.png" alt="依據洗錢威脅辨識結果發現，臺灣深受洗錢非常高度威脅的犯罪共有10 大類型，包含毒品販運、詐欺、走私、稅務犯罪、組織犯罪、證券犯罪、地下匯兌、非法賭博含網路博弈、貪污賄賂及智慧財產犯罪等，高度威脅的犯罪類型則為第三方洗錢，現在就讓我們跟著洗防寶寶的腳步，一起進行洗錢威脅大搜查吧！" width="1920" height="1080">
+                        </div>
+                        <div class="action">
+                            <a class="btn"
+                            @click="state.scrollToSection('section-roleChoose')">
+                                <img src="assets/images/kv-btn.png" alt="開始闖關" width="326" height="119">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 0.1 選擇角色 -->
+                <div class="section choose" id="section-roleChoose">
+                    <div class="container">
+                        <div class="bg"><img src="assets/images/choose-bg.jpg" alt="" width="1920" height="1080"></div>
+                        <div class="inner">
+                            <h3 class="title"><img src="assets/images/choose-title.png" alt="請選擇您的角色" width="326" height="119"></h3>
+                            <div class="list">
+                                <div class="item"
+                                :class="{
+                                    active: state.avatar === 'female'
+                                }"
+                                @click="state.avatar = 'female'">
+                                    <img src="assets/images/choose-item1.png" alt="女生" width="364" height="415">
+                                </div>
+                                <div class="item"
+                                :class="{
+                                    active: state.avatar === 'male'
+                                }"
+                                @click="state.avatar = 'male'">
+                                    <img src="assets/images/choose-item2.png" alt="男生" width="364" height="415">
+                                </div>
+                                <div class="item"
+                                :class="{
+                                    active: state.avatar === 'robot'
+                                }"
+                                @click="state.avatar = 'robot'">
+                                    <img src="assets/images/choose-item3.png" alt="洗防寶寶" width="364" height="415">
+                                </div>
+                            </div>
+                            <!-- <div class="form">
+                                <input type="text" class="form-control" placeholder="請輸入姓名" v-model="state.name">
+                                <button class="btn"
+                                :class="{
+                                    disabled: isEmpty(state.avatar) || isEmpty(state.name)
+                                }"
+                                @click="state.scrollToSection('section-catchGameIntro', {
+                                    avatarOffsetX: window.avatarOffsetX['section-catchGameIntro']
+                                })"><img src="assets/images/btn-submit.png" alt="確認送出" width="326" height="119"></button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section game1-intro" id="section-catchGameIntro">
+                    <div class="container">
+                        <div class="bg">
+                            <img src="assets/images/game1-intro.jpg" alt="第一關 關卡說明" width="1920" height="1080">
+                            <div class="layer"><img src="assets/images/game1-intro-anim.gif" alt=""></div>
+                        </div>
+                        <div class="inner">
+                            <div class="action">
+                                <a class="btn"
+                                @click="state.scrollToSection('section-catchGame', {
+                                    duration: 2000,
+                                    easing: 'linear',
+                                }, function(){
+                                    state.catchGame.start()
+                                })">
+                                    <img src="assets/images/btn-start.png" alt="遊戲開始" width="326" height="119">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section game1-main" id="section-catchGame">
+                    <div class="container">
+
+                        <div class="bg">
+                            <img src="assets/images/game1-main.jpg" alt="第一關 關卡" width="1920" height="1080">
+                        </div>
+
+                        <div class="inner">
+
+                            <div class="dropArea"></div>
+
+                            <div class="control control-left z-[100]"
+                            v-if="state.catchGame.time > 0"
+                            @click="state.catchGame.moveCatchBox(state.catchGame.avatarLocation-1)">
+                                <img src="assets/images/control-left.png" alt="" width="40" height="40">
+                            </div>
+                            <div class="control control-right z-[100]"
+                            v-if="state.catchGame.time > 0"
+                            @click="state.catchGame.moveCatchBox(state.catchGame.avatarLocation+1)">
+                                <img src="assets/images/control-right.png" alt="" width="40" height="40">
+                            </div>
+
+                            <div class="panel">
+                                <div class="block star">{{state.catchGame.score}}</div>
+                                <div class="block time">{{state.catchGame.time}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section game2-intro" id="section-pairGameIntro">
+                    <div class="container">
+
+                        <div class="bg">
+                            <img src="assets/images/game2-intro.jpg" alt="第二關 關卡說明" width="1920" height="1080">
+                            <div class="layer"><img src="assets/images/game2-intro-anim.gif" alt=""></div>
+                        </div>
+
+                        <div class="inner">
+                            <div class="action">
+                                <a class="btn"
+                                @click="state.scrollToSection('section-pairGame', {
+                                    duration: 2000,
+                                    easing: 'linear',
+                                    avatarOffsetX: window.avatarOffsetX['section-pairGame'],
+                                }, function(){
+                                    state.pairGame.start()
+                                })">
+                                    <img src="assets/images/btn-start.png" alt="遊戲開始" width="326" height="119">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section game2-main" id="section-pairGame">
+                    <div class="container">
+
+                        <div class="bg"><img src="assets/images/game2-main.jpg" alt="第二關 關卡" width="1920" height="1080"></div>
+
+                        <div class="inner">
+
+                            <div class="panel">
+                                <div class="block star">{{state.pairGame.score}}</div>
+                                <div class="block time">{{state.pairGame.time}}</div>
+                            </div>
+
+                            <div class="hidden">
+                                <img src="assets/images/card-0.png" alt="">
+                                <img src="assets/images/card-1.png" alt="">
+                                <img src="assets/images/card-2.png" alt="">
+                                <img src="assets/images/card-3.png" alt="">
+                                <img src="assets/images/card-4.png" alt="">
+                                <img src="assets/images/card-5.png" alt="">
+                                <img src="assets/images/card-6.png" alt="">
+                                <img src="assets/images/card-7.png" alt="">
+                            </div>
+
+                            <div class="pairArea"></div>
+
+                            <div class="magnifier" data-origin-x="1594" data-origin-y="790" style="top: 790px; left: 1594px;"><img src="assets/images/magnifier.png" width="60" height="80"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section game3-intro" id="section-quizGameIntro">
+                    <div class="container">
+                        <div class="bg">
+                            <img src="assets/images/game3-intro.jpg" alt="第三關 關卡說明" width="1920" height="1080">
+                            <div class="layer"><img src="assets/images/game3-intro-anim.gif" alt=""></div>
+                        </div>
+
+                        <div class="inner">
+                            <div class="action">
+                                <a class="btn"
+                                @click="state.scrollToSection('section-quizGame', {
+                                    duration: 2000,
+                                    easing: 'linear',
+                                    avatarOffsetX: window.avatarOffsetX['section-quizGame']
+                                })">
+                                    <img src="assets/images/btn-start.png" alt="遊戲開始" width="326" height="119">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section game3-main" id="section-quizGame">
+                    <div class="container">
+                        <div class="bg"><img src="assets/images/game3-main.jpg" alt="第三關 關卡" width="1920" height="1080"></div>
+
+                        <div class="inner">
+                            <div class="panel" style="display: none;">
+                                <div class="block star">{{state.quizGame.score}}</div>
+                                <div class="block time">{{state.quizGame.time}}</div>
+                            </div>
+
+                            <div class="info"
+                            v-if="!state.quizGame.isGaming">
+                                <p>依據洗錢威脅辨識結果發現，臺灣深受洗錢非常高度威脅的犯罪共有10 大類型，包含毒品販運、詐欺、走私、稅務犯罪、組織犯罪、證券犯罪、地下匯兌、非法賭博含網路博弈、貪污賄賂及智慧財產犯罪等，高度威脅的犯罪類型則為第三方洗錢，現在就讓我們跟著洗防寶寶的腳步，一起進行洗錢威脅大搜查吧！</p>
+                                <div class="action">
+                                    <a class="btn btn-enter"
+                                    @click="()=>{
+                                        state.quizGame.start()
+                                    }">
+                                        <img src="assets/images/btn-enter.png" alt="進入題目" width="326" height="119">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="question"
+                            v-if="state.quizGame.isGaming">
+                                <div class="topic">{{state.quizGame.randomQuestion.question}}</div>
+                                <div class="list">
+                                    <div class="options"
+                                    :class="{
+                                        active: state.quizGame.chooseTemp === index
+                                    }"
+                                    :key="index"
+                                    v-for="(option, index) in state.quizGame.randomQuestion.options"
+                                    @click="state.quizGame.chooseTemp = index">
+                                        <span>{{ ['A', 'B', 'C', 'D'][index] }}. </span>
+                                        <span>{{ option }}</span>
+                                    </div>
+                                </div>
+                                <div class="action">
+                                    <a class="btn"
+                                    :class="{
+                                        disabled: isEmpty(state.quizGame.chooseTemp)
+                                    }"
+                                    @click="state.quizGame.answer(index, state.quizGame.chooseTemp)">
+                                        <img src="assets/images/btn-submit.png" alt="確認送出" width="326" height="119">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 1.3 第一關_闖關成功 -->
+        <div class="modal fade success-modal" id="game1-success-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="image"><img src="assets/images/success.png" alt="" width="182" height="236"></div>
+                <p class="text">恭喜闖關成功！</p>
+                <div class="action">
+                    <a class="btn" data-dismiss="modal"
+                    @click="state.scrollToSection('section-pairGameIntro', {
+                        duration: 2000,
+                        easing: 'linear',
+                        avatarOffsetX: window.avatarOffsetX['section-pairGameIntro']
+                    })"><img src="assets/images/btn-next.png" alt="前往下一關" width="359" height="119"></a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- 2.4 第二關_闖關成功 -->
+        <div class="modal fade success-modal" id="game2-success-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="image"><img src="assets/images/success.png" alt="" width="182" height="236"></div>
+                <p class="text">恭喜闖關成功！</p>
+                <div class="action">
+                    <a class="btn" data-dismiss="modal"
+                    @click="state.scrollToSection('section-quizGameIntro', {
+                        duration: 2000,
+                        easing: 'linear',
+                        avatarOffsetX: window.avatarOffsetX['section-quizGameIntro']
+                    })"><img src="assets/images/btn-next.png" alt="前往下一關" width="359" height="119"></a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- 3.3.1 第三關_問答題目_答對 -->
+        <div class="modal fade correct-modal" id="correct-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="image"><img src="assets/images/correct.png" alt="" width="293" height="230"></div>
+                <p class="text">答對了！</p>
+                <div class="action">
+                    <a class="btn" data-dismiss="modal"><img src="assets/images/btn-next_question.png" alt="下一題" width="359" height="119"></a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- 3.3.2 第三關_問答題目_答錯 -->
+        <div class="modal fade wrong-modal" id="wrong-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="image"><img src="assets/images/wrong.png" alt="" width="293" height="230"></div>
+                <p class="text">答錯了，再想想看！</p>
+                <div class="action">
+                    <a class="btn" data-dismiss="modal"
+                    @click="()=>{
+                        state.reset()
+                    }"><img src="assets/images/btn-try_again.png" alt="再試一次" width="359" height="119"></a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- 3.4 第三關_闖關成功 -->
+        <div class="modal fade success-modal" id="game3-success-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="image"><img src="assets/images/success.png" alt="" width="182" height="236"></div>
+                <p class="text">恭喜闖關成功！</p>
+                <div class="action">
+                    <a class="btn" data-dismiss="modal" data-toggle="modal" data-target="#form-modal"><img src="assets/images/btn-leave_information.png" alt="前往留資料抽獎" width="359" height="119"></a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- 4.0 填寫資料 -->
+        <div class="modal fade form-modal" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- <h3 class="title">恭喜您闖關成功！</h3>
+                <p class="text">請填寫以下資料</p>
+                <form id="" class="form">
+                    <div>
+                        <input type="hidden" name="game-name" :value="state.name" />
+                        <input type="hidden" name="game-avatar" :value="state.avatar" />
+                        <input type="hidden" name="catchGame-score" :value="state.catchGame.score" />
+                        <input type="hidden" name="pairGame-score" :value="state.pairGame.score" />
+                        <input type="hidden" name="pairGame-remainingTime" :value="state.pairGame.time" />
+                        <input type="hidden" name="quizGame-question" :value="state.quizGame.randomQuestion.question" />
+                    </div>
+                    <div class="form-section">
+                        <label class="form-label">姓名</label>
+                        <div class="form-content">
+                            <input type="text" class="form-control" name="Name" id="" value="" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <label class="form-label">電話</label>
+                        <div class="form-content">
+                            <input type="text" class="form-control" name="Phone" id="" value="" placeholder="">
+                        </div>
+                    </div>
+                    <div class="action">
+                        <button class="btn"><img src="assets/images/btn-submit.png" alt="確認送出" width="110" height="38"></button>
+                    </div>
+                </form> -->
+                <div class="image"><img src="assets/images/success.png" alt="" width="182" height="236"></div>
+                <p class="text">恭喜您闖關成功！</p>
+            </div>
+        </div>
+        </div>
+
+        <!-- 5.0 排行榜 -->
+        <div class="modal fade charts-modal" id="charts-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="title"><img src="assets/images/charts-title.png" alt="排行榜" width="395" height="89"></h3>
+                <div class="scroll-box">
+                    <div class="scroll-box__inner">
+                        <div class="charts-table">
+                            <table width="100%">
+                                <tr>
+                                    <th width="30%">名次</th>
+                                    <th width="40%">姓名</th>
+                                    <th width="30%">時間</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>荷包蛋</td>
+                                    <td>100 分</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>水煮蛋</td>
+                                    <td>90 分</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>糖心蛋</td>
+                                    <td>80 分</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>茶葉蛋</td>
+                                    <td>70 分</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>太陽蛋</td>
+                                    <td>60 分</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>溫泉蛋</td>
+                                    <td>50 分</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>溫泉蛋</td>
+                                    <td>40 分</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>溫泉蛋</td>
+                                    <td>30 分</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>溫泉蛋</td>
+                                    <td>20 分</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>溫泉蛋</td>
+                                    <td>9.8 秒</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- 0.0 首頁_提示 -->
+        <div class="modal hint-modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <h3 class="title">貼心小提醒</h3>
+                <p>建議使用 Chrome 或 Safari 瀏覽器<br />以獲得最佳使用者體驗！</p>
+                <p>遊戲畫面僅支援橫式螢幕，<br />請將裝置轉橫式使用！</p>
+                <div class="image"><img src="assets/images/hint-turn.png" alt="" width="80" height="73"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script src="assets/js/jquery.inview.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+</body>
+
+</html>
