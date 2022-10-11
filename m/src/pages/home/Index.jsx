@@ -224,6 +224,12 @@ export default {
       }
     })
 
+    watch(()=>state.avatar, (curVal, preVal)=>{
+      console.log(curVal, preVal)
+    }, {
+      immediate: true
+    })
+
     onMounted(()=>{
       window.onload = function(){
         setTimeout(()=>{
