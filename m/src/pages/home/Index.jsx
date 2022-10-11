@@ -40,8 +40,8 @@ export default {
         },
         onMoveCatchBox: (e)=>{
           // 移動角色時執行 callback，PC 端需同步執行下列命令
-          const x = $(state.catchGame.gameArea).find('.column').eq(e.columnIndex).offset().left
-          $(state.catchGame.catchBox).css('left', `${x}px`)
+          // const x = $(state.catchGame.gameArea).find('.column').eq(e.columnIndex).offset().left
+          // $(state.catchGame.catchBox).css('left', `${x}px`)
         },
         onDropItemCreated: (e)=>{
 
