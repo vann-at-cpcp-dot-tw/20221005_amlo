@@ -137,27 +137,27 @@ PairGame.prototype.check = function(){
 
 }
 
-PairGame.prototype.openCard = function(card){
+// PairGame.prototype.openCard = function(card){
 
-  const { data, index } = card
-  const element = $(this.gameArea).find(`.card-${index}`)
+//   const { data, index } = card
+//   const element = $(this.gameArea).find(`.card-${index}`)
 
-  if( $(element).is('.open') || this._closing || this._readyForMatch.length >= 2 ){
-    return
-  }
+//   if( $(element).is('.open') || this._closing || this._readyForMatch.length >= 2 ){
+//     return
+//   }
 
-  $(element).append(`<div class="front"><img src="${data.url}" alt="" /></div>`)
+//   $(element).append(`<div class="front"><img src="${data.url}" alt="" /></div>`)
 
-  setTimeout(()=>{
-    $(element).addClass('open')
+//   setTimeout(()=>{
+//     $(element).addClass('open')
 
-    setTimeout(()=>{
-      this._readyForMatch.push(card)
-      this.check()
-    }, this.flipDuration)
-  }, 0)
+//     setTimeout(()=>{
+//       this._readyForMatch.push(card)
+//       this.check()
+//     }, this.flipDuration)
+//   }, 0)
 
-}
+// }
 
 PairGame.prototype.closeCard = function(){
 

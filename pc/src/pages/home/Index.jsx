@@ -142,6 +142,26 @@ export default {
           state.pairGame.time = 60
           state.pairGame._matched = 0
           $(state.pairGame.gameArea).empty()
+        },
+        openCard: (card)=>{
+          const self = state.pairGame
+          const { data, index } = card
+          const element = $(self.gameArea).find(`.card-${index}`)
+
+          if( $(element).is('.open') || self._closing || self._readyForMatch.length >= 2 ){
+            return
+          }
+
+          $(element).append(`<div class="front"><img src="${data.url}" alt="" /></div>`)
+
+          setTimeout(()=>{
+            $(element).addClass('open')
+
+            setTimeout(()=>{
+              self._readyForMatch.push(card)
+              self.check()
+            }, self.flipDuration)
+          }, 0)
         }
       }),
       quizGame: new quizGame(
@@ -197,7 +217,15 @@ export default {
             return !isEmpty(state.quizGame._timer)
           }),
           randomQuestion: computed(()=>{
-            return arrayShuffle(state.quizGame.questions)[0]
+            if( state.section !== 'section-quizGameIntro' ){
+              return {
+                question: null,
+                options: []
+              }
+            }
+
+            const result = arrayShuffle(state.quizGame.questions)[0] // 202210112027: 隨機挑選題目，可從這裡抓，但 pc 版的 html 那邊就不能綁 {{ state.quizGame.randomQuestion.XXXX }} 需自行再指定到別的地方
+            return result
           }),
           reset: ()=>{
             state.quizGame.clearTimer()
