@@ -6,6 +6,7 @@ import { isEmpty, arrayShuffle } from '@src/helpers'
 
 function PairGame({
   time, score, sourceCards=[], cardBack='', gameArea, prepareTime=7000, timeAfterOpen=300, flipDuration=200,
+  onInit=()=>{},
   onStart=()=>{},
   onBeforeClose=()=>{},
   onClick=()=>{},
@@ -24,6 +25,7 @@ function PairGame({
   this.timeAfterOpen = timeAfterOpen // ms
   this.flipDuration = flipDuration //ms
   this.prepareTime = prepareTime // ms
+  this.onInit = onInit
   this.onClick = onClick
   this.onStart = onStart
   this.onBeforeClose = onBeforeClose
@@ -67,32 +69,39 @@ PairGame.prototype.init = function(){
   }
   </style>`)
 
-  this.cards = arrayShuffle([
-    ...this.sourceCards,
-    ...this.sourceCards,
-  ])
+  this.onInit()
 
-  this.cards.forEach((node)=>{
+  // this.cards = arrayShuffle([
+  //   ...this.sourceCards,
+  //   ...this.sourceCards,
+  // ])
 
-    const card = document.createElement('div')
-    $(card).addClass('card')
-    $(card).append(`
-      <div class="back"><img src="${this.cardBack}" /></div>
-      <div class="front"><img src="${node.url}" /></div>
-    `)
-    $(card).addClass('open')
-    $(this.gameArea).append(card)
-    $(card).on('click', ()=>{
-      this.onClick({
-        data: node,
-        element: card,
-      })
-      this.openCard({
-        data: node,
-        element: card,
-      })
-    })
-  })
+  // this.cards.forEach((node, index)=>{
+
+  //   const card = document.createElement('div')
+  //   $(card).addClass(`card-${index}`)
+  //   $(card).addClass('card')
+  //   $(card).append(`
+  //     <div class="back"><img src="${this.cardBack}" /></div>
+  //     <div class="front"><img src="${node.url}" /></div>
+  //   `)
+  //   $(card).addClass('open')
+  //   $(this.gameArea).append(card)
+
+  //   $(card).on('click', ()=>{
+  //     this.onClick({
+  //       data: node,
+  //       index: index,
+  //     })
+
+  //     this.openCard({
+  //       data: node,
+  //       index: index,
+  //     })
+  //   })
+
+  // })
+
 }
 
 PairGame.prototype.check = function(){
@@ -106,7 +115,8 @@ PairGame.prototype.check = function(){
   if( isMatched ){
 
     this._readyForMatch.forEach((cardInLoop)=>{
-      $(cardInLoop.element).addClass('done')
+      const element = $(this.gameArea).find('.card').eq(cardInLoop.index)
+      $(element).addClass('done')
     })
 
     this._matched += 1
@@ -129,7 +139,8 @@ PairGame.prototype.check = function(){
 
 PairGame.prototype.openCard = function(card){
 
-  const { data, element } = card
+  const { data, index } = card
+  const element = $(this.gameArea).find(`.card-${index}`)
 
   if( $(element).is('.open') || this._closing || this._readyForMatch.length >= 2 ){
     return

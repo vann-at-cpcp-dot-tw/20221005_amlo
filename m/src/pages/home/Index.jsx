@@ -98,9 +98,45 @@ export default {
         score: computed(()=>{
           return state.pairGame._matched * 10
         }),
+        onInit: ()=>{
+
+          const randomCards = arrayShuffle([ // 202210112027: 這邊是初始隨機洗牌
+            ...state.pairGame.sourceCards,
+            ...state.pairGame.sourceCards,
+          ])
+
+          state.pairGame.cards = randomCards // 202210112027: 這邊是初始隨機洗牌
+
+          state.pairGame.cards.forEach((node, index)=>{ // 202210112027: 這邊是把洗牌後的 card 逐一加事件
+
+            const card = document.createElement('div')
+            $(card).addClass(`card-${index}`)
+            $(card).addClass('card')
+            $(card).append(`
+              <div class="back"><img src="${state.pairGame.cardBack}" /></div>
+              <div class="front"><img src="${node.url}" /></div>
+            `)
+            $(card).addClass('open')
+            $(state.pairGame.gameArea).append(card)
+
+            $(card).on('click', ()=>{
+              state.pairGame.onClick({ // 202210112027: 這邊賦予的 onClick 的詳細內容在下方 line: 134
+                data: node,
+                index: index,
+              })
+
+              state.pairGame.openCard({
+                data: node,
+                index: index,
+              })
+            })
+
+          })
+        },
         onClick: (e)=>{
-          const x = $(e.element).position().left + 30
-          const y = $(e.element).position().top + -10
+          const element = $(state.pairGame.gameArea).find(`.card-${e.index}`)
+          const x = $(element).position().left + 30
+          const y = $(element).position().top + -10
           const origin = {
             x: $('.magnifier').data('origin-x'),
             y: $('.magnifier').data('origin-y'),
@@ -119,9 +155,10 @@ export default {
         },
         onBeforeClose: (e)=>{
           e.forEach((node)=>{
+            const element = $(state.pairGame.gameArea).find(`.card-${node.index}`)
             $('.card').removeClass('animate__animated animate__flash')
             setTimeout(()=>{
-              $(node.element).addClass('animate__animated animate__flash')
+              $(element).addClass('animate__animated animate__flash')
             }, 0)
           })
         },
@@ -193,7 +230,8 @@ export default {
             return !isEmpty(state.quizGame._timer)
           }),
           randomQuestion: computed(()=>{
-            return arrayShuffle(state.quizGame.questions)[0]
+            const result = arrayShuffle(state.quizGame.questions)[0] // 202210112027: 隨機挑選題目，可從這裡抓，但 pc 版的 html 那邊就不能綁 {{ state.quizGame.randomQuestion.XXXX }} 需自行再指定到別的地方
+            return result
           }),
           reset: ()=>{
             state.quizGame.clearTimer()
@@ -259,6 +297,12 @@ export default {
 
     watch(()=>state.avatar, (curVal, preVal)=>{
       console.log(curVal, preVal)
+    }, {
+      immediate: true
+    })
+
+    watch(()=>state.catchGame.score, (curVal, preVal)=>{ // 202210112027: 新增 watch
+
     }, {
       immediate: true
     })

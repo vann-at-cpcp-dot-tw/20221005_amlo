@@ -7,7 +7,8 @@ function CatchGame({
   time, catchBox, gameArea, dropItemImg, dropSpeed=[500, 1000], genItemSpeed, genItemMode='wait',
   onStart=()=>{},
   onCaught=()=>{},
-  onTimesUp=()=>{}
+  onTimesUp=()=>{},
+  onDropItemCreated=()=>{}
 } = {}){
 
   // 建構式函式繼承(繼承屬性)
@@ -24,6 +25,7 @@ function CatchGame({
   this.onStart = onStart
   this.onCaught = onCaught
   this.onTimesUp = onTimesUp
+  this.onDropItemCreated = onDropItemCreated
 
   this._caughtTimes = 0
   this._caughtItems = []
@@ -99,45 +101,46 @@ CatchGame.prototype.moveCatchBox = function(columnIndex){
 
 CatchGame.prototype.genDropItem = function(){
 
-  let targetColumnIndex
-  let targetColumn
+  // 202210112027: 取消金幣自動產生
+  // let targetColumnIndex
+  // let targetColumn
 
-  switch(this.genItemSpeed){
-    case 'continuous': {
-      targetColumnIndex = rand(0, this.amountOfColumns-1)
-      targetColumn = $(this.gameArea).find('.column').eq(targetColumnIndex)[0]
-      break
-    }
+  // switch(this.genItemSpeed){
+  //   case 'continuous': {
+  //     targetColumnIndex = rand(0, this.amountOfColumns-1)
+  //     targetColumn = $(this.gameArea).find('.column').eq(targetColumnIndex)[0]
+  //     break
+  //   }
 
-    case 'wait':
-    default: {
-      targetColumn = arrayShuffle($(this.gameArea).find('.column').filter(function(){
-        return !$.trim(this.innerHTML)
-      }))[0]
-      break
-    }
-  }
+  //   case 'wait':
+  //   default: {
+  //     targetColumn = arrayShuffle($(this.gameArea).find('.column').filter(function(){
+  //       return !$.trim(this.innerHTML)
+  //     }))[0]
+  //     break
+  //   }
+  // }
 
-  const currentDropItemIndex = $(targetColumn).find('.dropItem').length
-  const currentDropSpeed = typeof this.dropSpeed === 'number' ?this.dropSpeed :rand(this.dropSpeed[0], this.dropSpeed[1])
+  // const currentDropItemIndex = $(targetColumn).find('.dropItem').length
+  // const currentDropSpeed = typeof this.dropSpeed === 'number' ?this.dropSpeed :rand(this.dropSpeed[0], this.dropSpeed[1])
 
-  if( this.genItemMode === 'wait' && !targetColumn ){
-    return
-  }
+  // if( this.genItemMode === 'wait' && !targetColumn ){
+  //   return
+  // }
 
-  $(targetColumn).append(`<div class="dropItem dropItem-${currentDropItemIndex}" style="transition: all ${currentDropSpeed}ms cubic-bezier(0.250, 0.250, 0.750, 0.750);">
-    <img src="${this.dropItemImg}" alt="" />
-  </div>`)
+  // $(targetColumn).append(`<div class="dropItem dropItem-${currentDropItemIndex}" style="transition: all ${currentDropSpeed}ms cubic-bezier(0.250, 0.250, 0.750, 0.750);">
+  //   <img src="${this.dropItemImg}" alt="" />
+  // </div>`)
 
-  const currentDropItem = $(targetColumn).find(`.dropItem-${currentDropItemIndex}`)[0]
+  // const currentDropItem = $(targetColumn).find(`.dropItem-${currentDropItemIndex}`)[0]
 
-  setTimeout(()=>{
-    $(currentDropItem).addClass('dropping')
-  }, 10)
+  // setTimeout(()=>{
+  //   $(currentDropItem).addClass('dropping')
+  // }, 10)
 
-  setTimeout(()=>{
-    $(currentDropItem).detach()
-  }, currentDropSpeed + 10)
+  // setTimeout(()=>{
+  //   $(currentDropItem).detach()
+  // }, currentDropSpeed + 10)
 
 }
 
