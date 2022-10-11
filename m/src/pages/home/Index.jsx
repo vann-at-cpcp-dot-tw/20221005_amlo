@@ -37,7 +37,29 @@ export default {
         },
         onTimesUp: (e)=>{
           $('#game1-success-modal').modal('show')
-        }
+        },
+        onDropItemCreated: (e)=>{
+
+          // 金幣創建時會執行這段 callback，PC 端需同步執行下列命令（不可在手機端開啟這段）
+
+          // const { columnIndex, dropItemIndex, dropSpeed } = e
+          // const targetColumn = $(state.catchGame.gameArea).find('.column').eq(columnIndex)[0]
+
+          // $(targetColumn).append(`<div class="dropItem dropItem-${dropItemIndex}" style="transition: all ${dropSpeed}ms cubic-bezier(0.250, 0.250, 0.750, 0.750);">
+          //   <img src="${state.catchGame.dropItemImg}"  />
+          // </div>`)
+
+          // const currentDropItem = $(targetColumn).find(`.dropItem-${dropItemIndex}`)[0]
+
+          // setTimeout(()=>{
+          //   $(currentDropItem).addClass('dropping')
+          // }, 10)
+
+          // setTimeout(()=>{
+          //   $(currentDropItem).detach()
+          // }, e.dropSpeed + 10)
+
+        },
       },
       {
         reset: ()=>{

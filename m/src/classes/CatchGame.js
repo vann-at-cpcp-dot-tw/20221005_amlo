@@ -7,7 +7,8 @@ function CatchGame({
   time, catchBox, gameArea, dropItemImg, dropSpeed=[500, 1000], genItemSpeed, genItemMode='wait',
   onStart=()=>{},
   onCaught=()=>{},
-  onTimesUp=()=>{}
+  onTimesUp=()=>{},
+  onDropItemCreated=()=>{},
 } = {}){
 
   // 建構式函式繼承(繼承屬性)
@@ -22,8 +23,10 @@ function CatchGame({
   this.genItemSpeed = genItemSpeed || ((dropSpeed[0] + dropSpeed[1]) / 2) // ms
   this.genItemMode = genItemMode // wait, continuous
   this.onStart = onStart
+  this.onDropItemCreated = onDropItemCreated
   this.onCaught = onCaught
   this.onTimesUp = onTimesUp
+
 
   this._caughtTimes = 0
   this._caughtItems = []
@@ -114,6 +117,7 @@ CatchGame.prototype.genDropItem = function(){
       targetColumn = arrayShuffle($(this.gameArea).find('.column').filter(function(){
         return !$.trim(this.innerHTML)
       }))[0]
+      targetColumnIndex = $(targetColumn).index()
       break
     }
   }
@@ -124,6 +128,12 @@ CatchGame.prototype.genDropItem = function(){
   if( this.genItemMode === 'wait' && !targetColumn ){
     return
   }
+
+  this.onDropItemCreated({
+    columnIndex: targetColumnIndex,
+    dropItemIndex: currentDropItemIndex,
+    dropSpeed: currentDropSpeed,
+  })
 
   $(targetColumn).append(`<div class="dropItem dropItem-${currentDropItemIndex}" style="transition: all ${currentDropSpeed}ms cubic-bezier(0.250, 0.250, 0.750, 0.750);">
     <img src="${this.dropItemImg}" alt="" />
