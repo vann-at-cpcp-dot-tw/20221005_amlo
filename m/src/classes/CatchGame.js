@@ -101,7 +101,7 @@ CatchGame.prototype.moveCatchBox = function(columnIndex){
   $(this.catchBox).css('left', `${cssPosition}px`)
 
   this.onMoveCatchBox({
-    x: cssPosition
+    columnIndex: this.avatarLocation
   })
 
 }
