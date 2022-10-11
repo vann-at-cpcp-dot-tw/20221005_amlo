@@ -78,7 +78,7 @@ export default defineConfig(({mode})=>{
           // assetFileNames: 'assets/[name]-[hash].[ext]',
           // chunkFileNames: 'chunks/[name]-[hash].js',
           // entryFileNames: 'entry/[name]-[hash].js'
-          assetFileNames: 'assets2/[name].[ext]',
+          assetFileNames: 'assets/[name].[ext]',
           chunkFileNames: 'chunks/[name].js',
           entryFileNames: 'entry/[name].js'
         }
