@@ -29,7 +29,7 @@
 
     <style>
         .pairArea {
-            margin-top: 15px
+            margin-top: 25px
         }
         .pairArea .card {
             position: absolute;
@@ -68,7 +68,7 @@
 </head>
 
 <body>
-    <div id="app" class="overflow-hidden" v-cloak>
+    <div id="app" v-cloak>
         <div id="container">
             <div id="header" class="site-header">
                 <div class="container">
@@ -118,7 +118,9 @@
                 <div class="section choose" id="section-roleChoose">
                     <div class="container">
                         <div class="bg"><img src="assets/images/choose-bg.jpg" alt="" width="667" height="375"></div>
-                        <div class="inner">
+
+                        <div class="inner"
+                        v-show="state.section === 'section-roleChoose'">
                             <h3 class="title"><img src="assets/images/choose-title.png" alt="請選擇您的角色" width="152" height="38"></h3>
                             <div class="list">
                                 <div class="item"
@@ -165,7 +167,9 @@
                             <img src="assets/images/game1-intro.jpg" alt="第一關 關卡說明" width="667" height="375">
                             <div class="layer"><img src="assets/images/game1-intro-anim.gif" alt=""></div>
                         </div>
-                        <div class="inner">
+
+                        <div class="inner"
+                        v-show="state.section === 'section-catchGameIntro'">
                             <div class="action">
                                 <a class="btn"
                                 @click="state.scrollToSection('section-catchGame', {
@@ -188,7 +192,8 @@
                             <img src="assets/images/game1-main.jpg" alt="第一關 關卡" width="667" height="375">
                         </div>
 
-                        <div class="inner">
+                        <div class="inner"
+                        v-show="state.section === 'section-catchGame'">
 
                             <div class="dropArea"></div>
 
@@ -219,7 +224,8 @@
                             <div class="layer"><img src="assets/images/game2-intro-anim.gif" alt=""></div>
                         </div>
 
-                        <div class="inner">
+                        <div class="inner"
+                        v-show="state.section === 'section-pairGameIntro'">
                             <div class="action">
                                 <a class="btn"
                                 @click="state.scrollToSection('section-pairGame', {
@@ -241,7 +247,8 @@
 
                         <div class="bg"><img src="assets/images/game2-main.jpg" alt="第二關 關卡" width="667" height="375"></div>
 
-                        <div class="inner">
+                        <div class="inner"
+                        v-show="state.section === 'section-pairGame'">
 
                             <div class="panel">
                                 <div class="block star">{{state.pairGame.score}}</div>
@@ -276,7 +283,8 @@
                             <div class="layer"><img src="assets/images/game3-intro-anim.gif" alt=""></div>
                         </div>
 
-                        <div class="inner">
+                        <div class="inner"
+                        v-show="state.section === 'section-quizGameIntro'">
                             <div class="action">
                                 <a class="btn"
                                 @click="state.scrollToSection('section-quizGame', {
@@ -295,7 +303,8 @@
                     <div class="container">
                         <div class="bg"><img src="assets/images/game3-main.jpg" alt="第三關 關卡" width="667" height="375"></div>
 
-                        <div class="inner">
+                        <div class="inner"
+                        v-show="state.section === 'section-quizGame'">
                             <div class="panel" style="display: none;">
                                 <div class="block star">{{state.quizGame.score}}</div>
                                 <div class="block time">{{state.quizGame.time}}</div>

@@ -190,13 +190,15 @@ export default {
 
         const { duration=800, easing, avatarOffsetX=0 } = args
 
+        state.section = target
+
         $('html, body').animate({
           scrollLeft: ($(`#${target}`).offset().left) + ($(`#${target}`).width() / 2) - ($(window).width() / 2)
         }, {
           duration,
           easing,
           complete: ()=>{
-            state.section = target
+            // state.section = target
           }
         })
 
