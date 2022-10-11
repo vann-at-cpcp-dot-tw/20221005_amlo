@@ -217,7 +217,7 @@ export default {
             return !isEmpty(state.quizGame._timer)
           }),
           randomQuestion: computed(()=>{
-            if( state.section !== 'section-quizGameIntro' ){
+            if( state.section !== 'section-quizGame' ){
               return {
                 question: null,
                 options: []
