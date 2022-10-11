@@ -71,6 +71,12 @@ export default {
           state.catchGame.clearTimer()
           state.catchGame.time = 30
           state.catchGame.score = 0
+        },
+        moveLeft: ()=>{
+          state.catchGame.moveCatchBox(state.catchGame.avatarLocation-1)
+        },
+        moveRight: ()=>{
+          state.catchGame.moveCatchBox(state.catchGame.avatarLocation+1)
         }
       }),
       pairGame: new PairGame({

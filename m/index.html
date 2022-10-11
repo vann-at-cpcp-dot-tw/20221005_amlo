@@ -199,12 +199,12 @@
 
                             <div class="control control-left z-[100]"
                             v-if="state.catchGame.time > 0"
-                            @click="state.catchGame.moveCatchBox(state.catchGame.avatarLocation-1)">
+                            @click="state.catchGame.moveLeft()">
                                 <img src="assets/images/control-left.png" alt="" width="40" height="40">
                             </div>
                             <div class="control control-right z-[100]"
                             v-if="state.catchGame.time > 0"
-                            @click="state.catchGame.moveCatchBox(state.catchGame.avatarLocation+1)">
+                            @click="state.catchGame.moveRight()">
                                 <img src="assets/images/control-right.png" alt="" width="40" height="40">
                             </div>
 
