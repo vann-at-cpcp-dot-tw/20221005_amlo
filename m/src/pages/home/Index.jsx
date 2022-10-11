@@ -38,9 +38,13 @@ export default {
         onTimesUp: (e)=>{
           $('#game1-success-modal').modal('show')
         },
+        onMoveCatchBox: (e)=>{
+          // 移動角色時執行 callback，PC 端需同步執行下列命令
+          // $(state.catchGame.catchBox).css('left', `${e.x}px`)
+        },
         onDropItemCreated: (e)=>{
 
-          // 金幣創建時會執行這段 callback，PC 端需同步執行下列命令（不可在手機端開啟這段）
+          // 金幣創建時執行 callback，PC 端需同步執行下列命令（不可在手機端開啟這段）
 
           // const { columnIndex, dropItemIndex, dropSpeed } = e
           // const targetColumn = $(state.catchGame.gameArea).find('.column').eq(columnIndex)[0]

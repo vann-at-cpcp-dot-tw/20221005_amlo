@@ -6,9 +6,10 @@ import { rand, isEmpty, arrayShuffle } from '@src/helpers'
 function CatchGame({
   time, catchBox, gameArea, dropItemImg, dropSpeed=[500, 1000], genItemSpeed, genItemMode='wait',
   onStart=()=>{},
+  onDropItemCreated=()=>{},
+  onMoveCatchBox=()=>{},
   onCaught=()=>{},
   onTimesUp=()=>{},
-  onDropItemCreated=()=>{},
 } = {}){
 
   // 建構式函式繼承(繼承屬性)
@@ -24,6 +25,7 @@ function CatchGame({
   this.genItemMode = genItemMode // wait, continuous
   this.onStart = onStart
   this.onDropItemCreated = onDropItemCreated
+  this.onMoveCatchBox = onMoveCatchBox
   this.onCaught = onCaught
   this.onTimesUp = onTimesUp
 
@@ -97,6 +99,10 @@ CatchGame.prototype.moveCatchBox = function(columnIndex){
 
   const cssPosition = $(this.gameArea).find('.column').eq(this.avatarLocation).offset().left
   $(this.catchBox).css('left', `${cssPosition}px`)
+
+  this.onMoveCatchBox({
+    x: cssPosition
+  })
 
 }
 
