@@ -48,8 +48,8 @@ export default {
       }),
       pairGame: new PairGame({
         gameArea: '.pairArea',
-        time: 60,
-        prepareTime: 10000,
+        time: 30,
+        prepareTime: 5000,
         flipDuration: 0,
         timeAfterOpen: 1000,
         sourceCards: [
