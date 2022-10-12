@@ -233,6 +233,8 @@ export default {
             }else{
               $('#wrong-modal').modal('show')
             }
+
+            // 可以在這邊抓 state.quizGame.isAllCorrect 得知第三關的作答是否正確，並同步 pc 版分數
           }
         },
         {
