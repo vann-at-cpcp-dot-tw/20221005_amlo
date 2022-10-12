@@ -139,7 +139,7 @@ export default {
       {
         reset: ()=>{
           state.pairGame.clearTimer()
-          state.pairGame.time = 60
+          state.pairGame.time = 30
           state.pairGame._matched = 0
           $(state.pairGame.gameArea).empty()
         },
