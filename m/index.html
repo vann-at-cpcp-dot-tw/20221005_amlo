@@ -411,11 +411,14 @@
                 <div class="modal-content">
                     <div class="image"><img src="assets/images/wrong.png" alt="" width="96" height="80"></div>
                     <p class="text">答錯了，再想想看！</p>
-                    <div class="action">
+                    <!-- <div class="action">
                         <a class="btn" data-dismiss="modal"
                         @click="()=>{
                             state.reset()
                         }"><img src="assets/images/btn-try_again.png" alt="再試一次" width="124" height="42"></a>
+                    </div> -->
+                    <div class="action">
+                        <a class="btn" data-dismiss="modal" data-toggle="modal" data-target="#form-modal"><img src="assets/images/btn-leave_information.png" alt="前往留資料抽獎" width="124" height="42"></a>
                     </div>
                 </div>
             </div>
@@ -474,7 +477,7 @@
         </div>
 
         <!-- m_5.0 排行榜 -->
-        <div class="modal fade charts-modal" id="charts-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade charts-modal" id="charts-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -549,7 +552,7 @@
         </div>
 
         <!-- m_0.0 首頁_提示 -->
-        <div class="modal hint-modal">
+        <div class="modal hint-modal" data-backdrop="static">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <h3 class="title">貼心小提醒</h3>
