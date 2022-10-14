@@ -176,9 +176,9 @@ export default {
         //     })
         //   }, delay)
         // },
-        onClick: function(e){
+        onClick: function(index){
           try {
-            const element = $(state.pairGame.gameArea).find(`.card-${e.index}`)
+            const element = $(state.pairGame.gameArea).find(`.card-${index}`)
             const x = $(element).position().left + 30
             const y = $(element).position().top + -10
 
@@ -247,7 +247,7 @@ export default {
         //   }, 0)
         // }
         openCard: function(card){
-          // card = jQuery.parseJSON(card)
+          card = jQuery.parseJSON(card)
 
           const self = state.pairGame
           const data = card.data
