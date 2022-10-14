@@ -128,6 +128,7 @@ export default {
           state.pairGame.cards = randomCards // 202210112027: 這邊是初始隨機洗牌
 
           nextTick(()=>{
+
             state.pairGame.cards.forEach((node, index)=>{ // 202210112027: 這邊是把洗牌後的 card 逐一加事件
 
               const card = document.createElement('div')
@@ -175,9 +176,9 @@ export default {
         //     })
         //   }, delay)
         // },
-        onClick: function(index){
+        onClick: function(e){
           try {
-            const element = $(state.pairGame.gameArea).find(`.card-${index}`)
+            const element = $(state.pairGame.gameArea).find(`.card-${e.index}`)
             const x = $(element).position().left + 30
             const y = $(element).position().top + -10
 
@@ -246,7 +247,7 @@ export default {
         //   }, 0)
         // }
         openCard: function(card){
-          card = jQuery.parseJSON(card)
+          // card = jQuery.parseJSON(card)
 
           const self = state.pairGame
           const data = card.data
