@@ -118,10 +118,10 @@ export default {
         //   })
         // },
         onInit: function(randomCards){
-          // randomCards = jQuery.parseJSON(randomCards)
+          randomCards = jQuery.parseJSON(randomCards)
 
           // 模擬用
-          randomCards = jQuery.parseJSON('[{"url":"assets/images/card-1.png","key":0},{"url":"assets/images/card-3.png","key":2},{"url":"assets/images/card-2.png","key":1},{"url":"assets/images/card-1.png","key":0},{"url":"assets/images/card-6.png","key":5},{"url":"assets/images/card-2.png","key":1},{"url":"assets/images/card-5.png","key":4},{"url":"assets/images/card-6.png","key":5},{"url":"assets/images/card-7.png","key":6},{"url":"assets/images/card-3.png","key":2},{"url":"assets/images/card-7.png","key":6},{"url":"assets/images/card-5.png","key":4},{"url":"assets/images/card-4.png","key":3},{"url":"assets/images/card-4.png","key":3}]')
+          // randomCards = jQuery.parseJSON('[{"url":"assets/images/card-1.png","key":0},{"url":"assets/images/card-3.png","key":2},{"url":"assets/images/card-2.png","key":1},{"url":"assets/images/card-1.png","key":0},{"url":"assets/images/card-6.png","key":5},{"url":"assets/images/card-2.png","key":1},{"url":"assets/images/card-5.png","key":4},{"url":"assets/images/card-6.png","key":5},{"url":"assets/images/card-7.png","key":6},{"url":"assets/images/card-3.png","key":2},{"url":"assets/images/card-7.png","key":6},{"url":"assets/images/card-5.png","key":4},{"url":"assets/images/card-4.png","key":3},{"url":"assets/images/card-4.png","key":3}]')
 
           console.log(randomCards)
 
