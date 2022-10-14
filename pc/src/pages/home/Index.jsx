@@ -118,10 +118,10 @@ export default {
         //   })
         // },
         onInit: function(randomCards){
-          randomCards = jQuery.parseJSON(randomCards)
+          // randomCards = jQuery.parseJSON(randomCards)
 
           // 模擬用
-          // randomCards = jQuery.parseJSON('[{"url":"assets/images/card-1.png","key":0},{"url":"assets/images/card-3.png","key":2},{"url":"assets/images/card-2.png","key":1},{"url":"assets/images/card-1.png","key":0},{"url":"assets/images/card-6.png","key":5},{"url":"assets/images/card-2.png","key":1},{"url":"assets/images/card-5.png","key":4},{"url":"assets/images/card-6.png","key":5},{"url":"assets/images/card-7.png","key":6},{"url":"assets/images/card-3.png","key":2},{"url":"assets/images/card-7.png","key":6},{"url":"assets/images/card-5.png","key":4},{"url":"assets/images/card-4.png","key":3},{"url":"assets/images/card-4.png","key":3}]')
+          randomCards = jQuery.parseJSON('[{"url":"assets/images/card-1.png","key":0},{"url":"assets/images/card-3.png","key":2},{"url":"assets/images/card-2.png","key":1},{"url":"assets/images/card-1.png","key":0},{"url":"assets/images/card-6.png","key":5},{"url":"assets/images/card-2.png","key":1},{"url":"assets/images/card-5.png","key":4},{"url":"assets/images/card-6.png","key":5},{"url":"assets/images/card-7.png","key":6},{"url":"assets/images/card-3.png","key":2},{"url":"assets/images/card-7.png","key":6},{"url":"assets/images/card-5.png","key":4},{"url":"assets/images/card-4.png","key":3},{"url":"assets/images/card-4.png","key":3}]')
 
           console.log(randomCards)
 
@@ -129,7 +129,7 @@ export default {
 
           nextTick(()=>{
 
-            state.pairGame.cards.forEach((node, index)=>{ // 202210112027: 這邊是把洗牌後的 card 逐一加事件
+            randomCards.forEach((node, index)=>{ // 202210112027: 這邊是把洗牌後的 card 逐一加事件
 
               const card = document.createElement('div')
               $(card).addClass(`card-${index}`)
@@ -408,13 +408,13 @@ export default {
       //   // state.catchGame.start()
       // })
 
-      state.scrollToSection('section-pairGameIntro', {
-        duration: 200,
-        easing: 'linear',
-        avatarOffsetX: 150
-      }, function(){
-        // state.quizGame.start()
-      })
+      // state.scrollToSection('section-pairGameIntro', {
+      //   duration: 200,
+      //   easing: 'linear',
+      //   avatarOffsetX: 150
+      // }, function(){
+      //   // state.quizGame.start()
+      // })
     })
 
     window.state = state
