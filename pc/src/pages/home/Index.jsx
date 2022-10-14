@@ -44,6 +44,23 @@ export default {
           state.catchGame.clearTimer()
           state.catchGame.time = 30
           state.catchGame.score = 0
+        },
+        onDropItemCreated: function(columnIndex, dropItemIndex, dropSpeed){
+          const targetColumn = $(state.catchGame.gameArea).find('.column').eq(columnIndex)[0]
+
+          $(targetColumn).append(`<div class="dropItem dropItem-${dropItemIndex}" style="transition: all ${dropSpeed}ms cubic-bezier(0.250, 0.250, 0.750, 0.750);">
+            <img src="${state.catchGame.dropItemImg}"  />
+          </div>`)
+
+          const currentDropItem = $(targetColumn).find(`.dropItem-${dropItemIndex}`)[0]
+
+          setTimeout(()=>{
+            $(currentDropItem).addClass('dropping')
+          }, 10)
+
+          setTimeout(()=>{
+            $(currentDropItem).detach()
+          }, dropSpeed + 10)
         }
       }),
       pairGame: new PairGame({
@@ -65,60 +82,125 @@ export default {
         score: computed(()=>{
           return state.pairGame._matched * 10
         }),
-        onInit: ()=>{
+        // onInit: ()=>{
 
-          const randomCards = arrayShuffle([ // 202210112027: 這邊是初始隨機洗牌
-            ...state.pairGame.sourceCards,
-            ...state.pairGame.sourceCards,
-          ])
+        //   const randomCards = arrayShuffle([ // 202210112027: 這邊是初始隨機洗牌
+        //     ...state.pairGame.sourceCards,
+        //     ...state.pairGame.sourceCards,
+        //   ])
+
+        //   state.pairGame.cards = randomCards // 202210112027: 這邊是初始隨機洗牌
+
+        //   state.pairGame.cards.forEach((node, index)=>{ // 202210112027: 這邊是把洗牌後的 card 逐一加事件
+
+        //     const card = document.createElement('div')
+        //     $(card).addClass(`card-${index}`)
+        //     $(card).addClass('card')
+        //     $(card).append(`
+        //       <div class="back"><img src="${state.pairGame.cardBack}" /></div>
+        //       <div class="front"><img src="${node.url}" /></div>
+        //     `)
+        //     $(card).addClass('open')
+        //     $(state.pairGame.gameArea).append(card)
+
+        //     $(card).on('click', ()=>{
+        //       state.pairGame.onClick({ // 202210112027: 這邊賦予的 onClick 的詳細內容在下方 line: 134
+        //         data: node,
+        //         index: index,
+        //       })
+
+        //       state.pairGame.openCard({
+        //         data: node,
+        //         index: index,
+        //       })
+        //     })
+
+        //   })
+        // },
+        onInit: function(randomCards){
+          randomCards = jQuery.parseJSON(randomCards)
+
+          // 模擬用
+          // randomCards = jQuery.parseJSON('[{"url":"assets/images/card-1.png","key":0},{"url":"assets/images/card-3.png","key":2},{"url":"assets/images/card-2.png","key":1},{"url":"assets/images/card-1.png","key":0},{"url":"assets/images/card-6.png","key":5},{"url":"assets/images/card-2.png","key":1},{"url":"assets/images/card-5.png","key":4},{"url":"assets/images/card-6.png","key":5},{"url":"assets/images/card-7.png","key":6},{"url":"assets/images/card-3.png","key":2},{"url":"assets/images/card-7.png","key":6},{"url":"assets/images/card-5.png","key":4},{"url":"assets/images/card-4.png","key":3},{"url":"assets/images/card-4.png","key":3}]')
+
+          console.log(randomCards)
 
           state.pairGame.cards = randomCards // 202210112027: 這邊是初始隨機洗牌
 
-          state.pairGame.cards.forEach((node, index)=>{ // 202210112027: 這邊是把洗牌後的 card 逐一加事件
+          nextTick(()=>{
+            state.pairGame.cards.forEach((node, index)=>{ // 202210112027: 這邊是把洗牌後的 card 逐一加事件
 
-            const card = document.createElement('div')
-            $(card).addClass(`card-${index}`)
-            $(card).addClass('card')
-            $(card).append(`
-              <div class="back"><img src="${state.pairGame.cardBack}" /></div>
-              <div class="front"><img src="${node.url}" /></div>
-            `)
-            $(card).addClass('open')
-            $(state.pairGame.gameArea).append(card)
+              const card = document.createElement('div')
+              $(card).addClass(`card-${index}`)
+              $(card).addClass('card')
+              $(card).append(`
+                <div class="back"><img src="${state.pairGame.cardBack}" /></div>
+                <div class="front"><img src="${node.url}" /></div>
+              `)
+              $(card).addClass('open')
+              $(state.pairGame.gameArea).append(card)
 
-            $(card).on('click', ()=>{
-              state.pairGame.onClick({ // 202210112027: 這邊賦予的 onClick 的詳細內容在下方 line: 134
-                data: node,
-                index: index,
+              $(card).on('click', ()=>{
+                state.pairGame.onClick({ // 202210112027: 這邊賦予的 onClick 的詳細內容在下方 line: 134
+                  data: node,
+                  index: index,
+                })
+
+                state.pairGame.openCard({
+                  data: node,
+                  index: index,
+                })
               })
 
-              state.pairGame.openCard({
-                data: node,
-                index: index,
-              })
             })
-
           })
         },
-        onClick: (e)=>{
-          const element = $(state.pairGame.gameArea).find(`.card-${e.index}`)
-          const x = $(element).position().left + 30
-          const y = $(element).position().top + -10
-          const origin = {
-            x: $('.magnifier').data('origin-x'),
-            y: $('.magnifier').data('origin-y'),
-          }
-          const delay = 150
-          $('.magnifier').css({
-            left: `${x}px`,
-            top: `${y}px`,
-          })
-          setTimeout(()=>{
+        // onClick: (e)=>{
+        //   const element = $(state.pairGame.gameArea).find(`.card-${e.index}`)
+        //   const x = $(element).position().left + 30
+        //   const y = $(element).position().top + -10
+        //   const origin = {
+        //     x: $('.magnifier').data('origin-x'),
+        //     y: $('.magnifier').data('origin-y'),
+        //   }
+        //   const delay = 150
+        //   $('.magnifier').css({
+        //     left: `${x}px`,
+        //     top: `${y}px`,
+        //   })
+        //   setTimeout(()=>{
+        //     $('.magnifier').css({
+        //       left: `${origin.x}px`,
+        //       top: `${origin.y}px`,
+        //     })
+        //   }, delay)
+        // },
+        onClick: function(index){
+          try {
+            const element = $(state.pairGame.gameArea).find(`.card-${index}`)
+            const x = $(element).position().left + 30
+            const y = $(element).position().top + -10
+
+            const origin = {
+              x: $('.magnifier').data('origin-x'),
+              y: $('.magnifier').data('origin-y'),
+            }
+            const delay = 150
             $('.magnifier').css({
-              left: `${origin.x}px`,
-              top: `${origin.y}px`,
+              left: `${x}px`,
+              top: `${y}px`,
             })
-          }, delay)
+            setTimeout(()=>{
+              $('.magnifier').css({
+                left: `${origin.x}px`,
+                top: `${origin.y}px`,
+              })
+            }, delay)
+          }
+          catch (e){
+            console.log(e.name)
+            console.log(e.message)
+          }
         },
         onBeforeClose: (e)=>{
           e.forEach((node)=>{
@@ -143,9 +225,32 @@ export default {
           state.pairGame._matched = 0
           $(state.pairGame.gameArea).empty()
         },
-        openCard: (card)=>{
+        // openCard: (card)=>{
+        //   const self = state.pairGame
+        //   const { data, index } = card
+        //   const element = $(self.gameArea).find(`.card-${index}`)
+
+        //   if( $(element).is('.open') || self._closing || self._readyForMatch.length >= 2 ){
+        //     return
+        //   }
+
+        //   $(element).append(`<div class="front"><img src="${data.url}" alt="" /></div>`)
+
+        //   setTimeout(()=>{
+        //     $(element).addClass('open')
+
+        //     setTimeout(()=>{
+        //       self._readyForMatch.push(card)
+        //       self.check()
+        //     }, self.flipDuration)
+        //   }, 0)
+        // }
+        openCard: function(card){
+          card = jQuery.parseJSON(card)
+
           const self = state.pairGame
-          const { data, index } = card
+          const data = card.data
+          const index = card.index
           const element = $(self.gameArea).find(`.card-${index}`)
 
           if( $(element).is('.open') || self._closing || self._readyForMatch.length >= 2 ){
@@ -302,13 +407,13 @@ export default {
       //   // state.catchGame.start()
       // })
 
-      // state.scrollToSection('section-quizGameIntro', {
-      //   duration: 200,
-      //   easing: 'linear',
-      //   avatarOffsetX: 150
-      // }, function(){
-      //   // state.quizGame.start()
-      // })
+      state.scrollToSection('section-pairGameIntro', {
+        duration: 200,
+        easing: 'linear',
+        avatarOffsetX: 150
+      }, function(){
+        // state.quizGame.start()
+      })
     })
 
     window.state = state

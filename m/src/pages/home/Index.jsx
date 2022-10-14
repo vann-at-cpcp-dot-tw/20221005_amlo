@@ -107,30 +107,32 @@ export default {
 
           state.pairGame.cards = randomCards // 202210112027: 這邊是初始隨機洗牌
 
-          state.pairGame.cards.forEach((node, index)=>{ // 202210112027: 這邊是把洗牌後的 card 逐一加事件
+          nextTick(()=>{
+            state.pairGame.cards.forEach((node, index)=>{ // 202210112027: 這邊是把洗牌後的 card 逐一加事件
 
-            const card = document.createElement('div')
-            $(card).addClass(`card-${index}`)
-            $(card).addClass('card')
-            $(card).append(`
+              const card = document.createElement('div')
+              $(card).addClass(`card-${index}`)
+              $(card).addClass('card')
+              $(card).append(`
               <div class="back"><img src="${state.pairGame.cardBack}" /></div>
               <div class="front"><img src="${node.url}" /></div>
             `)
-            $(card).addClass('open')
-            $(state.pairGame.gameArea).append(card)
+              $(card).addClass('open')
+              $(state.pairGame.gameArea).append(card)
 
-            $(card).on('click', ()=>{
-              state.pairGame.onClick({ // 202210112027: 這邊賦予的 onClick 的詳細內容在下方 line: 134
-                data: node,
-                index: index,
+              $(card).on('click', ()=>{
+                state.pairGame.onClick({ // 202210112027: 這邊賦予的 onClick 的詳細內容在下方 line: 134
+                  data: node,
+                  index: index,
+                })
+
+                state.pairGame.openCard({
+                  data: node,
+                  index: index,
+                })
               })
 
-              state.pairGame.openCard({
-                data: node,
-                index: index,
-              })
             })
-
           })
         },
         onClick: (e)=>{
