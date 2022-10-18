@@ -39,30 +39,10 @@ export default {
           $('#game1-success-modal').modal('show')
         },
         onMoveCatchBox: (e)=>{
-          // 移動角色時執行 callback，PC 端需同步執行下列命令
-          // const x = $(state.catchGame.gameArea).find('.column').eq(e.columnIndex).offset().left
-          // $(state.catchGame.catchBox).css('left', `${x}px`)
+          const cssPosition = $(state.catchGame.gameArea).find('.column').eq(e.columnIndex).position().left + $('#section-catchGame').position().left
+          $(state.catchGame.catchBox).css('left', `${cssPosition}px`)
         },
         onDropItemCreated: (e)=>{
-
-          // 金幣創建時執行 callback，PC 端需同步執行下列命令（不可在手機端開啟這段）
-
-          // const { columnIndex, dropItemIndex, dropSpeed } = e
-          // const targetColumn = $(state.catchGame.gameArea).find('.column').eq(columnIndex)[0]
-
-          // $(targetColumn).append(`<div class="dropItem dropItem-${dropItemIndex}" style="transition: all ${dropSpeed}ms cubic-bezier(0.250, 0.250, 0.750, 0.750);">
-          //   <img src="${state.catchGame.dropItemImg}"  />
-          // </div>`)
-
-          // const currentDropItem = $(targetColumn).find(`.dropItem-${dropItemIndex}`)[0]
-
-          // setTimeout(()=>{
-          //   $(currentDropItem).addClass('dropping')
-          // }, 10)
-
-          // setTimeout(()=>{
-          //   $(currentDropItem).detach()
-          // }, e.dropSpeed + 10)
 
         },
       },
@@ -290,12 +270,13 @@ export default {
       }),
       scrollToSection: function(target, args={}, callback=function(){}){
 
+
         const { duration=800, easing, avatarOffsetX=0 } = args
 
         state.section = target
 
-        $('html, body').animate({
-          scrollLeft: ($(`#${target}`).offset().left) + ($(`#${target}`).width() / 2) - ($(window).width() / 2)
+        $('#app').animate({
+          left: `-${$(`#${target}`).position().left + (($(`#${target}`).width() / 2) - (($(window).width() / 2))) }px`
         }, {
           duration,
           easing,
@@ -304,9 +285,8 @@ export default {
           }
         })
 
-
         $('#avatar').animate({
-          left:  ($(`#${target}`).offset().left) + ($(`#${target}`).width() / 2) - ($('#avatar').width() / 2) + avatarOffsetX,
+          left: $(`#${target}`).position().left + ($(`#${target}`).width() / 2) - ($('#avatar').width() / 2) + avatarOffsetX
         }, {
           duration: duration + 200,
           easing: 'easeInOutSine',
@@ -363,6 +343,7 @@ export default {
     })
 
     window.state = state
+
 
     return {
       window,
