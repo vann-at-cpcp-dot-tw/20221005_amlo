@@ -1968,10 +1968,20 @@ input[type="radio"]:focus {
   margin: 0 8px;
   text-align: center;
   cursor: pointer;
+  position: relative;
 }
-.choose .item.active img {
-  -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
-  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+.choose .item .change {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+}
+.choose .item.active .default {
+  visibility: hidden;
+}
+.choose .item.active .change {
+  opacity: 1;
 }
 .choose .form {
   display: -webkit-box;
@@ -2043,7 +2053,7 @@ input[type="radio"]:focus {
   -moz-flex-wrap: nowrap;
   -ms-flex-wrap: none;
   flex-wrap: nowrap;
-  font-size: 28px;
+  font-size: 26px;
   line-height: 46px;
   font-weight: 700;
   color: #fff;
@@ -2053,10 +2063,11 @@ input[type="radio"]:focus {
 .panel .block {
   background-size: 100%;
   background-repeat: no-repeat;
-  padding-right: 19px;
-  padding-left: 40px;
+  padding-right: 16px;
+  padding-left: 36px;
   font-family: 'Nunito', sans-serif;
   font-weight: 900;
+  white-space: nowrap;
 }
 .panel .star {
   width: 94px;
