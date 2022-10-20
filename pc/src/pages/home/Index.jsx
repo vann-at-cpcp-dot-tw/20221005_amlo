@@ -48,19 +48,65 @@ export default {
         onDropItemCreated: function(columnIndex, dropItemIndex, dropSpeed){
           const targetColumn = $(state.catchGame.gameArea).find('.column').eq(columnIndex)[0]
 
-          $(targetColumn).append(`<div class="dropItem dropItem-${dropItemIndex}" style="transition: all ${dropSpeed}ms cubic-bezier(0.250, 0.250, 0.750, 0.750);">
-            <img src="${state.catchGame.dropItemImg}"  />
-          </div>`)
-
-          const currentDropItem = $(targetColumn).find(`.dropItem-${dropItemIndex}`)[0]
+          const dropItem = document.createElement('div')
+          $(dropItem).addClass(`dropItem dropItem-${dropItemIndex}`)
+          $(dropItem).css({
+            transition: `all ${dropSpeed}ms cubic-bezier(0.250, 0.250, 0.750, 0.750)`,
+          })
+          $(dropItem).append(`<img src="${state.catchGame.dropItemImg}"  />`)
+          $(targetColumn).append(dropItem)
 
           setTimeout(()=>{
-            $(currentDropItem).addClass('dropping')
+            $(dropItem).addClass('dropping')
           }, 10)
 
           setTimeout(()=>{
-            $(currentDropItem).detach()
+            $(dropItem).detach()
           }, dropSpeed + 10)
+
+          // $(targetColumn).append(`<div class="dropItem dropItem-${dropItemIndex}" style="transition: all ${dropSpeed}ms cubic-bezier(0.250, 0.250, 0.750, 0.750);">
+          //   <img src="${state.catchGame.dropItemImg}"  />
+          // </div>`)
+
+          // const currentDropItem = $(targetColumn).find(`.dropItem-${dropItemIndex}`)[0]
+
+          // setTimeout(()=>{
+          //   $(currentDropItem).addClass('dropping')
+          // }, 10)
+
+          // setTimeout(()=>{
+          //   $(currentDropItem).detach()
+          // }, dropSpeed + 10)
+        },
+        async test(){
+          state.scrollToSection('section-catchGame', {
+            duration: 200,
+            easing: 'linear',
+            avatarOffsetX: 150
+          }, function(){
+            state.catchGame.start()
+          })
+
+          for (let index = 0; index < 40; index++){
+            let columnIndex = state.catchGame.getRandomInt(0,6)
+            let dropItemIndex = 0
+            let dropSpeed = state.catchGame.getRandomInt(500,999)
+            state.catchGame.onDropItemCreated(columnIndex, dropItemIndex, dropSpeed)
+            await state.catchGame.sleep(500)
+          }
+
+        },
+        sleep(millisecond){
+          return new Promise(resolve=>{
+            setTimeout(()=>{
+              resolve()
+            }, millisecond)
+          })
+        },
+        getRandomInt(min, max){
+          min = Math.ceil(min)
+          max = Math.floor(max)
+          return Math.floor(Math.random() * (max - min) + min)
         }
       }),
       pairGame: new PairGame({
