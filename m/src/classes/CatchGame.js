@@ -149,11 +149,11 @@ CatchGame.prototype.genDropItem = function(){
 
   setTimeout(()=>{
     $(currentDropItem).addClass('dropping')
-  }, 10)
+  }, 100)
 
   setTimeout(()=>{
     $(currentDropItem).detach()
-  }, currentDropSpeed + 10)
+  }, currentDropSpeed + 100)
 
 }
 
