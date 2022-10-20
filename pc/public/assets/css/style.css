@@ -1828,6 +1828,111 @@ input[type="radio"]:focus {
   height: 100%;
 }
 
+.open {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+.open img {
+  -moz-transition: ease 1s;
+  -o-transition: ease 1s;
+  -webkit-transition: ease 1s;
+  transition: ease 1s;
+  display: block;
+}
+.open-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  display: block;
+}
+.open-layer.animated {
+  opacity: 1;
+}
+.open-man img {
+  animation: floating 1s infinite;
+}
+.open-money img {
+  animation: floating 1s infinite;
+}
+.open-slogan {
+  transform-origin: 50% 25%;
+  opacity: 1;
+}
+.open.active .open-money {
+  -moz-animation: fadeInRight 1s both;
+  -webkit-animation: fadeInRight 1s both;
+  animation: fadeInRight 1s both;
+  animation-delay: .4s;
+}
+.open.active .open-man {
+  -moz-animation: fadeInLeft 1s both;
+  -webkit-animation: fadeInLeft 1s both;
+  animation: fadeInLeft 1s both;
+  opacity: 1;
+  animation-delay: .3s;
+}
+.open.active .open-slogan {
+  -moz-animation: zoomIn 0.8s both;
+  -webkit-animation: zoomIn 0.8s both;
+  animation: zoomIn 0.8s both;
+  opacity: 1;
+}
+.open.active .action {
+  -moz-animation: fadeInUp 1s both;
+  -webkit-animation: fadeInUp 1s both;
+  animation: fadeInUp 1s both;
+  opacity: 1;
+  animation-delay: .4s;
+}
+.open.active .qr-code {
+  -moz-animation: fadeInUp 1s both;
+  -webkit-animation: fadeInUp 1s both;
+  animation: fadeInUp 1s both;
+  opacity: 1;
+  animation-delay: .5s;
+}
+.open .action {
+  position: absolute;
+  top: 430px;
+  left: 403px;
+  width: 596px;
+  opacity: 0;
+}
+.open .btn {
+  position: relative;
+  -moz-transition: ease 0.5s;
+  -o-transition: ease 0.5s;
+  -webkit-transition: ease 0.5s;
+  transition: ease 0.5s;
+}
+.open .btn .hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+}
+.open .btn:hover .default, .open .btn:active .default {
+  visibility: hidden;
+}
+.open .btn:hover .hover, .open .btn:active .hover {
+  opacity: 1;
+}
+.open .qr-code {
+  position: absolute;
+  top: 520px;
+  left: 1086px;
+  width: 381px;
+  opacity: 0;
+}
+
 .kv {
   position: relative;
   z-index: 0;
@@ -2534,6 +2639,56 @@ input[type="radio"]:focus {
   margin-top: 24px;
 }
 
+.loading-modal .modal-dialog {
+  width: 749px;
+  max-width: 749px;
+}
+.loading-modal .modal-content {
+  border-radius: 76px;
+  padding: 79px;
+  height: 571px;
+  background-color: #fff;
+  border: 0;
+  box-shadow: none;
+}
+.loading-modal .image {
+  width: 290px;
+  margin: 0 auto 20px;
+}
+.loading-modal .progress-box {
+  border: 4px solid #000;
+  border-radius: 10px;
+  width: 302px;
+  height: 47px;
+  background-color: #fff;
+  padding: 5px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.loading-modal .progress-box.active .progress-bar {
+  animation: progress 2s forwards;
+}
+.loading-modal .progress-bar {
+  border-radius: 6px;
+  width: 0;
+  height: 47px;
+  background-color: #E20114;
+  height: 29px;
+  display: block;
+  -moz-transition: ease 1s;
+  -o-transition: ease 1s;
+  -webkit-transition: ease 1s;
+  transition: ease 1s;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
 @media (orientation: portrait) {
   .hint-modal {
     display: block;

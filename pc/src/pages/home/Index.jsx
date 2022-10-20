@@ -58,11 +58,11 @@ export default {
 
           setTimeout(()=>{
             $(dropItem).addClass('dropping')
-          }, 10)
+          }, 100)
 
           setTimeout(()=>{
             $(dropItem).detach()
-          }, dropSpeed + 10)
+          }, dropSpeed + 100)
 
           // $(targetColumn).append(`<div class="dropItem dropItem-${dropItemIndex}" style="transition: all ${dropSpeed}ms cubic-bezier(0.250, 0.250, 0.750, 0.750);">
           //   <img src="${state.catchGame.dropItemImg}"  />
