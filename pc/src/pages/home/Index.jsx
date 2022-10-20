@@ -127,8 +127,7 @@ export default {
 
           state.pairGame.cards = randomCards // 202210112027: 這邊是初始隨機洗牌
 
-          nextTick(()=>{
-
+          setTimeout(()=>{
             randomCards.forEach((node, index)=>{ // 202210112027: 這邊是把洗牌後的 card 逐一加事件
 
               const card = document.createElement('div')
@@ -154,7 +153,7 @@ export default {
               })
 
             })
-          })
+          }, 200)
         },
         // onClick: (e)=>{
         //   const element = $(state.pairGame.gameArea).find(`.card-${e.index}`)
