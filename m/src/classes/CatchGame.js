@@ -128,12 +128,12 @@ CatchGame.prototype.genDropItem = function(){
     }
   }
 
-  const currentDropItemIndex = $(targetColumn).find('.dropItem').length
-  const currentDropSpeed = typeof this.dropSpeed === 'number' ?this.dropSpeed :rand(this.dropSpeed[0], this.dropSpeed[1])
-
   if( this.genItemMode === 'wait' && !targetColumn ){
     return
   }
+
+  const currentDropItemIndex = $(targetColumn).find('.dropItem').length
+  const currentDropSpeed = typeof this.dropSpeed === 'number' ?this.dropSpeed :rand(this.dropSpeed[0], this.dropSpeed[1])
 
   this.onDropItemCreated({
     columnIndex: targetColumnIndex,
