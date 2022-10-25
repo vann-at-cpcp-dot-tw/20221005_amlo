@@ -125,24 +125,27 @@
                             <div class="list">
                                 <div class="item"
                                 :class="{
-                                    active: state.avatar === 'female'
+                                    // active: state.avatar === 'female'
                                 }"
                                 @click="state.avatar = 'female'">
-                                    <img src="assets/images/choose-item1.png" alt="女生" width="127" height="144">
+                                    <img v-show="state.avatar !== 'female'" src="assets/images/choose-item1.png" alt="女生" width="127" height="144" />
+                                    <img v-show="state.avatar === 'female'" src="assets/images/choose-item1_active.png" alt="女生" width="127" height="144" />
                                 </div>
                                 <div class="item"
                                 :class="{
-                                    active: state.avatar === 'male'
+                                    // active: state.avatar === 'male'
                                 }"
                                 @click="state.avatar = 'male'">
-                                    <img src="assets/images/choose-item2.png" alt="男生" width="127" height="144">
+                                    <img v-show="state.avatar !== 'male'" src="assets/images/choose-item2.png" alt="男生" width="127" height="144" />
+                                    <img v-show="state.avatar === 'male'" src="assets/images/choose-item2_active.png" alt="男生" width="127" height="144" />
                                 </div>
                                 <div class="item"
                                 :class="{
-                                    active: state.avatar === 'robot'
+                                    // active: state.avatar === 'robot'
                                 }"
                                 @click="state.avatar = 'robot'">
-                                    <img src="assets/images/choose-item3.png" alt="洗防寶寶" width="127" height="144">
+                                    <img v-show="state.avatar !== 'robot'" src="assets/images/choose-item3.png" alt="洗防寶寶" width="127" height="144" />
+                                    <img v-show="state.avatar === 'robot'" src="assets/images/choose-item3_active.png" alt="洗防寶寶" width="127" height="144" />
                                 </div>
                             </div>
                             <div class="form">
